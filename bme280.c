@@ -698,7 +698,7 @@ int8_t bme280_soft_reset(struct bme280_dev *dev)
 
         } while ((rslt == BME280_OK) && (try_run--) && (status_reg & BME280_STATUS_IM_UPDATE));
 
-        if (status_reg & BME280_STATUS_IM_UPDATE)
+        if ((rslt == BME280_OK) && (status_reg & BME280_STATUS_IM_UPDATE))
         {
             rslt = BME280_E_NVM_COPY_FAILED;
         }
